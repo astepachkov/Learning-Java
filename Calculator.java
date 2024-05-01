@@ -5,12 +5,12 @@ import java.util.Scanner;
         Scanner input = new Scanner(System.in);
             String userInput = input.nextLine();
         //    String userInput = "1 + 2";
-            String AllAround = userInput.replaceAll("\\s+", "");
-            String[] operands = AllAround.split("[+\\-*/]");
+            String[] operands = userInput.split(" +[+\\-*/]+ ");
+
             if (operands.length >2) {
                 throw new Exception("Калькулятор работает только с 2-мя целыми числами 1 до 10 и операндами +-*/");
             }
-            if (operands.length < 2) {throw new Exception("Строка не является математической операцией");}
+            if (operands.length < 2) {throw new Exception("Строка не является математической операцией, введите формат:A + B");}
             int number1 = 0;
             int number2 = 0;
             int result = 0;
@@ -24,8 +24,8 @@ import java.util.Scanner;
             if (number1 < 1 || number2 < 1 || number1 > 10 || number2 > 10)
                 throw new Exception("Калькулятор принимает числа от 1 до 10");
 
-            for (int i = 0; i < AllAround.length(); i++) {
-                char operator = AllAround.charAt(i);
+            for (int i = 0; i < userInput.length(); i++) {
+                char operator = userInput.charAt(i);
                 if (operator == '+' || operator == '-' || operator == '/' || operator == '*') {
                     symbol = operator;
                 }
